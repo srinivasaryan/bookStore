@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven 'Maven3'   // Name of Maven installation in Jenkins
-        jdk 'JDK11'      // Name of JDK installation in Jenkins
+        jdk 'JDK17'      // Name of JDK installation in Jenkins
     }
 
     stages {
@@ -15,19 +15,19 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean install -DskipTests'
+                bat 'mvn clean install -DskipTests'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('Package') {
             steps {
-                sh 'mvn package -DskipTests'
+                bat 'mvn package -DskipTests'
             }
             post {
                 success {
