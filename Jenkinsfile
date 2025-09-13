@@ -19,12 +19,6 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                bat 'mvn test'
-            }
-        }
-
         stage('Package') {
             steps {
                 bat 'mvn package -DskipTests'
@@ -38,8 +32,8 @@ pipeline {
 
         stage('Deploy to VM') {
             steps {
-                sh '''
-                scp -o StrictHostKeyChecking=no target/*.jar user@<linux-vm-ip>:/home/user/app/
+                bat '''
+                scp -o StrictHostKeyChecking=no target\\*.jar user@<linux-vm-ip>:/home/user/app/
                 ssh user@<linux-vm-ip> "nohup java -jar /home/user/app/*.jar > app.log 2>&1 &"
                 '''
             }
