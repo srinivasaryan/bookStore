@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven3'   // 👈 Jenkins Maven installation name
-        jdk 'JDK17'      // 👈 Jenkins JDK installation name
+        maven 'Maven3'   // Jenkins Maven installation name
+        jdk 'JDK17'      // Jenkins JDK installation name
     }
 
     stages {
@@ -38,11 +38,11 @@ pipeline {
 
         stage('Deploy to VM') {
             steps {
-                sshagent(['wsl-key']) {   // 👈 Replace with your Jenkins SSH credential ID
-                    bat '''
-                    scp -o StrictHostKeyChecking=no target\\bookstore-1.0-SNAPSHOT.jar srinivas@172.22.21.68:/home/srinivas/app/
-                    ssh srinivas@172.22.21.68 "nohup java -jar /home/srinivas/app/bookstore-1.0-SNAPSHOT.jar > /home/srinivas/app/app.log 2>&1 &"
-                    '''
+                withCredentials([sshUserPrivateKey(credentialsId: 'wsl-ssh-key', keyFileVariable: 'SSH_KEY')]) {
+                    bat """
+                    scp -o StrictHostKeyChecking=no -i %SSH_KEY% target\\bookstore-1.0-SNAPSHOT.jar srinivas@172.22.21.68:/home/srinivas/app/
+                    ssh -i %SSH_KEY% srinivas@172.22.21.68 "nohup java -jar /home/srinivas/app/bookstore-1.0-SNAPSHOT.jar > /home/srinivas/app/app.log 2>&1 &"
+                    """
                 }
             }
         }
