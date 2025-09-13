@@ -35,5 +35,14 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy to VM') {
+            steps {
+                bat '''
+                scp -o StrictHostKeyChecking=no target\\bookstore-1.0-SNAPSHOT.jar srinivas@172.22.21.68:/home/srinivas/app/
+                ssh srinivas@172.22.21.68 "nohup java -jar /home/srinivas/app/bookstore-1.0-SNAPSHOT.jar > /home/srinivas/app/app.log 2>&1 &"
+                '''
+            }
+        }
     }
 }
