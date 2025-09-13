@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/java/com/bookstore/BookService.java=UTF-8
+encoding//src/main/java/com/bookstore/BrowsingHistory.java=UTF-8
+encoding//src/main/java/com/bookstore/Cart.java=UTF-8
+encoding//src/main/java/com/bookstore/CheckoutService.java=UTF-8
+encoding//src/main/java/com/bookstore/DBUtils.java=UTF-8
+encoding//src/main/java/com/bookstore/Main.java=UTF-8
+encoding//src/main/java/com/bookstore/RecommendationService.java=UTF-8
+encoding//src/test/java=UTF-8
+encoding//src/test/resources=UTF-8
+encoding/<project>=UTF-8
