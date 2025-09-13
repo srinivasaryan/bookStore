@@ -1,0 +1,11 @@
+com\bookstore\Book.class
+com\bookstore\BrowsingHistory.class
+com\bookstore\DBUtils.class
+com\bookstore\Cart.class
+com\bookstore\DynamoDBConfig.class
+com\bookstore\RecommendationService.class
+com\bookstore\BookService.class
+com\bookstore\CheckoutService.class
+com\bookstore\Main.class
+com\bookstore\User.class
+com\bookstore\RecommendedBook.class

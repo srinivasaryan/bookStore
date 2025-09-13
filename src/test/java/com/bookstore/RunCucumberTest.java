@@ -12,8 +12,11 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.bookstore")
-// 👇 Use custom formatter, not "pretty"
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "com.bookstore.PlainFormatter")
+@ConfigurationParameter(
+    key = PLUGIN_PROPERTY_NAME,
+    value = "pretty, json:target/cucumber-reports/cucumber.json, html:target/cucumber-reports/cucumber.html"
+)
+@ConfigurationParameter(key = "cucumber.execution.monochrome", value = "true")
 public class RunCucumberTest {
     // empty
 }
